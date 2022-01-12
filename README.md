@@ -3,16 +3,16 @@
 1. Clone the project
    `git clone https://github.com/rahuls360/testing-sw.git`
 2. Install dependencies
-   `yarn install`
+   `npm install`
 3. Connect repo to your hosting. I used netlify-cli
    `npm install -g netlify-cli`
 4. Login to netlify-cli
    `netlify login`
 5. Deploy to Netlify
-   `yarn run deploy:prod`
+   `npm run deploy:prod`
 6. Make minor text changes
 7. Deploy new changes
-   `yarn run deploy:prod`
+   `npm run deploy:prod`
 8. Try to navigate between pages. You will see an 'Updates available' message, across all your open tabs.
 9. On clicking on 'Update'. The service worker are updated and all of your site's tabs are reloaded with new content.
 10. Profit ??

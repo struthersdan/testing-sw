@@ -8,12 +8,17 @@ const Page2 = React.lazy(() => import('./Page2'));
 const App = () => {
   const history = useHistory();
 
+  const checkForSW = () => {
+    console.log("checking for sw");
+    navigator.serviceWorker
+        .getRegistrations()
+        .then((regs) => regs.forEach((reg) => reg.update()))
+  }
+
   useEffect(() => {
     history.listen((location, action) => {
       // check for sw updates on page change
-      navigator.serviceWorker
-        .getRegistrations()
-        .then((regs) => regs.forEach((reg) => reg.update()));
+      checkForSW();
     });
   }, []);
 
@@ -24,6 +29,8 @@ const App = () => {
         reg.waiting.postMessage({ type: "SKIP_WAITING" });
       }));
   };
+
+  setInterval(checkForSW, 5000);
 
   return (
     <React.Suspense fallback='loading...'>
