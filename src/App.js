@@ -8,6 +8,16 @@ const Page2 = React.lazy(() => import('./Page2'));
 const App = () => {
   const history = useHistory();
 
+  const checkForSW = () => {
+    console.log("checking for sw");
+    navigator.serviceWorker
+        .getRegistrations()
+        .then((regs) => regs.forEach((reg) => reg.update()))
+  }
+
+  setInterval(checkForSW, 5000);
+
+
   useEffect(() => {
     history.listen((location, action) => {
       // check for sw updates on page change
